@@ -20,18 +20,49 @@
 ---
 ## SOAL 1
 ### Pertanyaan
-User melakukan berbagai aktivitas dengan menggunakan protokol FTP.
+User melakukan berbagai aktivitas dengan menggunakan protokol FTP. Salah satunya adalah mengunggah suatu file. <br>
+<li>Berapakah sequence number (raw) pada packet yang menunjukkan aktivitas tersebut? 
+<li>Berapakah acknowledge number (raw) pada packet yang menunjukkan aktivitas tersebut? 
+<li>Berapakah sequence number (raw) pada packet yang menunjukkan response dari aktivitas tersebut?
+<li>Berapakah acknowledge number (raw) pada packet yang menunjukkan response dari aktivitas tersebut?
 
 ### Solusi
----
+Pada soal no 1 kita diminta untuk mencari `sequence number (raw) & acknowledge number (raw) pada paket aktivitas tersebut (STOR)` dan juga `respon dari paket tersebut`, disini kita menggunakan ``ftp contains STOR``, kemudian menemukan sequence number (raw) & acknowledge number (raw) pada paket dan mengetahui nama dari paket tersebut dan melakukan filter kedua menggunakan ``ftp contains “c75-GrabThePhisher.zip”`` untuk mengetahui sequence number (raw) & acknowledge number (raw) pada response.
+
+kendala : tidak mengalami kendala untuk nomor ini.
+
+![img](image/1-1.png)
+![img](image/1-2.png)
+![img](image/1-3.png)
+<br>
+
 ## SOAL 2
 ### Pertanyaan
+Sebutkan web server yang digunakan pada portal praktikum Jaringan Komputer!
+
 ### Solusi
----
+Pada soal no 2 kita diminta menyebutkan web server yang digunakan pada portal praktikum Jaringan Komputer, disini kita menggunakan `http contains “10.21.78.111”` yaitu website dari praktikum jarkom, kemudian memilih paket yang tertera ``HTTP/1.1 200 OK`` yang berarti website berhasil di akses, pilih menu tersebut untuk mengetahui web server yang digunakan akan muncul pada baris keterangan server yaitu gunicorn.
+
+kendala : pada saat pertama kali melakukan filter contains dengan ip web jarkom, pada awalnya tidak muncul halaman web yang berhasil di akses atau ``HTTP/1.1 200 OK``,namun setelah kedua kalinya melakukan filter dan melakukan refresh, paket tersebut muncul dan dapat diketahui keterangan server yang digunakan.
+
+![img](image/2-1.png)
+![img](image/2-2.png)
+<br>
+
 ## SOAL 3
 ### Pertanyaan
+Dapin sedang belajar analisis jaringan. Bantulah Dapin untuk mengerjakan soal berikut:
+<li>Berapa banyak paket yang tercapture dengan IP source maupun destination address adalah 239.255.255.250 dengan port 3702?
+<li>Protokol layer transport apa yang digunakan?
+
 ### Solusi
----
+Pada soal no 3 kita diminta paket yang tercapture dengan IP source maupun destination address adalah `239.255.255.250` dengan `port 3702` dan juga Protokol layer transport apa yang digunakan. maka menggunakan filter `(ip.src == 239.255.255.250 && udp.port == 3702) || (ip.dst == 239.255.255.250 && udp.port == 3702)` untuk mencari ip source maupun destination yang sesuai dengan udp port yang di tentukan, dan menghasilkan ``21 paket`` yang tercapture dan protokol layer transport yang digunakan juga tertera adalah `UDP`.
+
+kendala : tidak mengalami kendala untuk nomor ini.
+
+![img](image/3-1.png)
+![img](image/3-2.png)
+
 ## SOAL 4
 ### Pertanyaan
 Berapa nilai checksum yang didapat dari header pada paket nomor 130?
