@@ -27,7 +27,7 @@ User melakukan berbagai aktivitas dengan menggunakan protokol FTP. Salah satunya
 <li>Berapakah acknowledge number (raw) pada packet yang menunjukkan response dari aktivitas tersebut?
 
 ### Solusi
-Pada soal no 1 kita diminta untuk mencari `sequence number (raw) & acknowledge number (raw) pada paket aktivitas tersebut (STOR)` dan juga `respon dari paket tersebut`, disini kita menggunakan ``ftp contains STOR``, kemudian menemukan sequence number (raw) & acknowledge number (raw) pada paket dan mengetahui nama dari paket tersebut dan melakukan filter kedua menggunakan ``ftp contains “c75-GrabThePhisher.zip”`` untuk mengetahui sequence number (raw) & acknowledge number (raw) pada response.
+Pada soal no 1 kita diminta untuk mencari `sequence number (raw) & acknowledge number (raw) pada paket aktivitas tersebut (STOR)` dan juga `respon dari paket tersebut`, disini kita menggunakan ``ftp contains "STOR"``, kemudian menemukan sequence number (raw) & acknowledge number (raw) pada paket dan mengetahui nama dari paket tersebut dan melakukan filter kedua menggunakan ``ftp contains “c75-GrabThePhisher.zip”`` untuk mengetahui sequence number (raw) & acknowledge number (raw) pada response.
 
 kendala : tidak mengalami kendala untuk nomor ini.
 
@@ -41,12 +41,19 @@ kendala : tidak mengalami kendala untuk nomor ini.
 Sebutkan web server yang digunakan pada portal praktikum Jaringan Komputer!
 
 ### Solusi
-Pada soal no 2 kita diminta menyebutkan web server yang digunakan pada portal praktikum Jaringan Komputer, disini kita menggunakan `http contains “10.21.78.111”` yaitu website dari praktikum jarkom, kemudian memilih paket yang tertera ``HTTP/1.1 200 OK`` yang berarti website berhasil di akses, pilih menu tersebut untuk mengetahui web server yang digunakan akan muncul pada baris keterangan server yaitu gunicorn.
+Pada soal no 2 kita diminta menyebutkan web server yang digunakan pada portal praktikum Jaringan Komputer, disini kita menggunakan `http contains “10.21.78.111”` yaitu website dari praktikum jarkom, kemudian memilih paket yang tertera ``HTTP/1.1 200 OK`` yang berarti website berhasil di akses, pilih menu tersebut untuk mengetahui web server yang digunakan akan muncul pada baris keterangan server yaitu gunicorn, atau dengan cara kedua adalah case apabila tidak muncul ``HTTP/1.1 200 OK`` adalah dengan membuka TCP Stream pada paket ``HTTP/1.1`` dan pada baris paling bawah terdapat informasi Server.
 
 kendala : pada saat pertama kali melakukan filter contains dengan ip web jarkom, pada awalnya tidak muncul halaman web yang berhasil di akses atau ``HTTP/1.1 200 OK``,namun setelah kedua kalinya melakukan filter dan melakukan refresh, paket tersebut muncul dan dapat diketahui keterangan server yang digunakan.
 
+cara pertama :
 ![img](image/2-1.png)
 ![img](image/2-2.png)
+
+<br>
+
+cara kedua: 
+![img](image/2-3.png)
+![img](image/2-4.png)
 <br>
 
 ## SOAL 3
